@@ -32,5 +32,3 @@ Fine-tuning should be done with a very slow learning rate, and typically with th
 1. Train :- 0.9315 , 0.2049
 2. Test :- 0.9241 , 0.2369
 
-**Final Table**
-
