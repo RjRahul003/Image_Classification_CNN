@@ -10,8 +10,8 @@ Our strategy will be as follow: we will only instantiate the convolutional part 
 The reason why we are storing the features offline rather than adding our fully-connected model directly on top of a frozen convolutional base and running the whole thing, is computational effiency. Running VGG16 is expensive, especially if you're working on CPU, and we want to only do it once. Note that this prevents us from using data augmentation.
 
 **Accuracy , Loss :-**
-1. Train :- 0.9532 , 0.1286
-2. Test :- 0.9164 , 0.2790
+1. Train :- 0.9363 , 0.1847
+2. Test :- 0.9217 , 0.2475
 
 # 2.Fine-tuning the top layers of a a pre-trained network
 To further improve our previous result, we can try to "fine-tune" the last convolutional block of the VGG16 model alongside the top-level classifier. Fine-tuning consist in starting from a trained network, then re-training it on a new dataset using very small weight updates. In our case, this can be done in 3 steps:
@@ -20,5 +20,13 @@ Note that:
 1) We choose to only fine-tune the last convolutional block rather than the entire network in order to prevent overfitting, since the entire network would have a very large entropic capacity and thus a strong tendency to overfit. The features learned by low-level convolutional blocks are more general, less abstract than those found higher-up, so it is sensible to keep the first few blocks fixed (more general features) and only fine-tune the last one (more specialized features). 2) Fine-tuning should be done with a very slow learning rate, and typically with the SGD optimizer rather than an adaptative learning rate optimizer such as RMSProp. This is to make sure that the magnitude of the updates stays very small
 
 **Accuracy , Loss :-**
-1. Train :- 0.9398 , 0.1776
-2. Test :- 0.9254 , 0.2353
+1. Train :- 0.9315 , 0.2049
+2. Test :- 0.9241 , 0.2369
+
+**Final Table**
++--------------------------------------------------------------+----------------+------------+---------------+-----------+
+|                           Approach                           | Train Accuracy | Train Loss | Test Accuracy | Test Loss |
++--------------------------------------------------------------+----------------+------------+---------------+-----------+
+| Using the bottleneck features of a pre-trained VGG16 network |     0.9363     |   0.1847   |     0.9217    |   0.2475  |
+|    Fine-tuning the top layers of a a pre-trained network     |     0.9315     |   0.2049   |     0.9241    |   0.2369  |
++--------------------------------------------------------------+----------------+------------+---------------+-----------+
