@@ -33,9 +33,4 @@ Fine-tuning should be done with a very slow learning rate, and typically with th
 2. Test :- 0.9241 , 0.2369
 
 **Final Table**
-+--------------------------------------------------------------+----------------+------------+---------------+-----------+
-|                           Approach                           | Train Accuracy | Train Loss | Test Accuracy | Test Loss |
-+--------------------------------------------------------------+----------------+------------+---------------+-----------+
-| Using the bottleneck features of a pre-trained VGG16 network |     0.9363     |   0.1847   |     0.9217    |   0.2475  |
-|    Fine-tuning the top layers of a a pre-trained network     |     0.9315     |   0.2049   |     0.9241    |   0.2369  |
-+--------------------------------------------------------------+----------------+------------+---------------+-----------+
+
